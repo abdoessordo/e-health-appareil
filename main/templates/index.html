@@ -1,12 +1,59 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="landing">
+            <div class="left">
+                <aside>
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="">
+                        <h2>e-<span class="danger">HEALTH</span></h2>
+                    </div>
+                </aside>
+
+                <main>
+                    <div class="card">
+                        <div class="top">
+                            <span class="material-icons-sharp">
+                                fingerprint
+                            </span>
+                            <form action="" method="">
+
+                                <div class="row">
+                                    <input type="text" placeholder="Enter CIN">
+                                </div>
+
+                                <div class="row">
+                                    <input type="password" placeholder="Enter Password">
+                                </div>
+                        
+                                <button id="login-btn" type="submit">
+                                    <h2>Log In</h2>
+                                </button>
+                                
+                            </form>
+                            <h3 class="text-muted">
+                                Can't remeber your password? <a class="text-muted" href="#">Recover it</a>.
+                            </h3>
+                        </div>
+                        <div class="bottom">
+                            <h3>
+                                Don't Have an Account? <a href="./register.html">Create it</a>.
+                            </h3>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
 </html>
