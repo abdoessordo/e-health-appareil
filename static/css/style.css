@@ -386,3 +386,55 @@ main form#create_insurance button h2,
     width: 100%;
     z-index: 50;
 }
+
+@media screen and (max-width:1200px) {
+
+    .landing.register,
+    .landing {
+        grid-template-columns: 40% auto;
+    }
+
+    .landing.register .left aside {
+        margin-bottom: 55rem;
+    }
+
+    .landing.register .left main form .section .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landing.register .left main form .section .buttons-container>button,
+    .landing.register .left main form .section .buttons-container>div {
+        width: 100% !important;
+        padding-inline: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .landing .right .welcome {
+        bottom: 25rem;
+    }
+
+    .landing .left main .bottom {
+        all: unset;
+    }
+
+    @media screen and (max-width:768px) {
+
+        .landing {
+            all: unset;
+        }
+
+        .landing .left aside {
+            all: unset;
+        }
+
+        .landing .left main {
+            position: relative;
+            top: unset;
+            left: unset;
+            margin-top: 2rem;
+            transform: unset;
+            height: 100%;
+            padding-inline: 2rem;
+        }
