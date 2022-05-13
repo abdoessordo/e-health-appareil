@@ -387,12 +387,6 @@ main form#create_insurance button h2,
 }
 
 @media screen and (max-width:1200px) {
-
-    .landing.register,
-    .landing {
-        grid-template-columns: 40% auto;
-    }
-
     .landing.register .left aside {
         margin-bottom: 55rem;
     }
