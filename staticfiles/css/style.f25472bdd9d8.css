@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ------------ ROOT VARIABLES ------------- */
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --color-hover: #ddd;
+    /* ------------------ */
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.42rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    /* ------------------ */
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+    /* ------------------ */
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+/* ------------ DARK THEME VARIABLES ------------- */
+
+.dark-theme-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    --color-hover: #464343;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+form,
+form input,
+form select,
+form textarea,
+form button {
+    font-family: poppins, sans-serif;
+    font-size: 1rem;
+    background: none;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+    font-weight: 500;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    padding: var(--card-padding);
+}
+
+form textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+body {
+    width: 100vw;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+
+label {
+    font-weight: 700;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+
+.landing form input::placeholder {
+    color: var(--color-info-dark);
+}
+
+.landing {
+    display: grid;
+    min-height: 100vh;
+    background-color: var(--color-background);
+}
+
+.landing .left {
+    margin-top: 1rem;
+    position: relative;
+}
+
+.landing .left aside {
+    height: unset;
+}
+
+.landing .left aside .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing .left aside .logo img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.landing .left aside .logo h2 {
+    font-size: 3rem;
+}
+
+.landing .left main {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-inline: 6rem;
+    width: 100%;
+}
+
+
+.landing .left main .card {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing .left main .card .top {
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.landing .left main .top>span {
+    margin: 0 auto;
+    margin-bottom: 0;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--color-primary);
+
+}
+
+.landing .left main>span {
+    margin: 0 auto;
+    margin-bottom: 0;
+    font-size: 4rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.landing .left main form .row.login-as>div>span {
+
+    margin: 0;
+    font-size: 2rem;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    color: var(--color-info-dark);
+    transition: all 300ms ease;
+}
+
+.landing .left main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing .left main form .row {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-light);
+    width: 90%;
+}
+
+.landing .left main form .row input {
+    text-align: center;
+}
+
+.landing .left main form .row select.login-as {
+    text-align: center;
+    cursor: pointer;
+}
+
+.landing .left main form .row input::placeholder {
+    transition: all 300ms ease;
+}
+
+.landing .left main form .row input:focus::placeholder {
+    color: transparent;
+}
+
+.landing .left main form .row.login-as {
+    position: relative;
+    cursor: pointer;
+}
+
+
+.landing .left main form .row.login-as h3.text-muted {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+.landing .left main form .row.login-as>span {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    color: var(--color-info-dark);
+    transition: all 300ms ease;
+}
+
+.flip_180 {
+    transform: rotate(180deg) !important;
+}
+
+
+main form#create_insurance button,
+.landing .left main form .next-section-btn,
+.landing .left main form button#login-btn {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    width: unset;
+    margin-top: 3rem;
+    padding: 0.5rem 7rem;
+    border: 0.2rem dashed var(--color-primary);
+    border-radius: var(--card-border-radius);
+    color: white;
+    transition: all 300ms ease;
+}
+
+main form#create_insurance button {
+    float: right;
+}
+
+main form#create_insurance button:hover,
+.landing .left main form .next-section-btn:hover,
+.landing .left main form button#login-btn:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+main form#create_insurance button h2,
+.landing .left main form button#login-btn h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.landing .left main h3.text-muted {
+    margin-top: 2rem;
+}
+
+.landing .left main a {
+    text-decoration: underline;
+}
+
+.landing .left main .card .bottom {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing .left main .card .bottom h3 {
+    font-size: 1rem;
+}
+
+.landing .left main form .calendar.card {
+    position: absolute;
+    top: 22rem;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+@media screen and (max-width:1200px) {
+
+    .landing.register,
+    .landing {
+        grid-template-columns: 40% auto;
+    }
+
+    .landing.register .left aside {
+        margin-bottom: 55rem;
+    }
+
+    .landing.register .left main form .section .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landing.register .left main form .section .buttons-container>button,
+    .landing.register .left main form .section .buttons-container>div {
+        width: 100% !important;
+        padding-inline: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .landing .right .welcome {
+        bottom: 25rem;
+    }
+
+    .landing .left main .bottom {
+        all: unset;
+    }
+
+    @media screen and (max-width:768px) {
+
+        .landing {
+            all: unset;
+        }
+
+        .landing .left aside {
+            all: unset;
+        }
+
+        .landing .left main {
+            position: relative;
+            top: unset;
+            left: unset;
+            margin-top: 2rem;
+            transform: unset;
+            height: 100%;
+            padding-inline: 2rem;
+        }
+    }
+}
