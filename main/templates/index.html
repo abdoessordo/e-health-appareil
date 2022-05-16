@@ -27,20 +27,19 @@
                             <span class="material-icons-sharp">
                                 fingerprint
                             </span>
-                            <form action="" method="">
+                            <form action="{% url 'login' %}" method="POST">
+                                {% csrf_token %}
 
                                 <div class="row">
-                                    <input type="text" placeholder="Enter CIN">
+                                    <input type="text" placeholder="Enter CIN" id="cin" value="" name="cin">
                                 </div>
 
                                 <div class="row">
-                                    <input type="password" placeholder="Enter Password">
+                                    <input type="password" placeholder="Enter Password" id="password" value="" name="password">
                                 </div>
-                        
                                 <button id="login-btn" type="submit">
                                     <h2>Log In</h2>
                                 </button>
-                                
                             </form>
                             <h3 class="text-muted">
                                 Can't remeber your password? <a class="text-muted" href="#">Recover it</a>.
@@ -50,5 +49,6 @@
                 </main>
             </div>
         </div>
+        <script src="{% static 'scripts/script.js' %}"></script>
     </body>
 </html>
