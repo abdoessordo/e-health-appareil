@@ -1,7 +1,8 @@
-from urllib import response
+import json
 from django.http import HttpResponse
 from django.shortcuts import render
 import requests
+import json
 
 
 # Create your views here.
@@ -13,9 +14,13 @@ def hello(request):
 def login(request):
     cin = request.POST['cin']
     password = request.POST['password']
-    status_code, server_response = get_inp(cin, password)
-    with open(".")
-    return HttpResponse("Hello")
+    status_code, response_data = get_inp(cin, password)
+    print(response_data)
+    if status_code == 200:
+        with open("./inp.json", "w") as inp_file:
+            json.dump(response_data, inp_file)
+        inp_file.close
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 def get_inp(cin, password):
