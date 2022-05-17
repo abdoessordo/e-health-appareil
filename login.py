@@ -14,9 +14,12 @@ def read_tag():
         GPIO.cleanup()
 
 
-def add_visit(medcin_id):
+def add_visit():
     patient_id = -999999
     while True:
+        with open("./inp.json", "r") as inp_f:
+            inp = json.load(inp_f)['INP']
+        inp_f.close()
         patient_id = print(read_tag())
         if(patient_id != -999999):
             DATA = {"patient": patient_id,
@@ -28,8 +31,4 @@ def add_visit(medcin_id):
 
 
 if __name__ == '__main__':
-    with open("./inp.json", "r") as inp_f:
-        inp = json.load(inp_f)['INP']
-    inp_f.close()
-    print(inp)
-    add_visit(inp)
+    add_visit()
