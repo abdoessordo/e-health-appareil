@@ -1,20 +1,20 @@
 import json
 import requests
-import RPi.GPIO as GPIO
-from mfrc522 import SimpleMFRC522 as rfid
+# import RPi.GPIO as GPIO
+# from mfrc522 import SimpleMFRC522 as rfid
 from time import sleep 
 
-GPIO.setwarnings(False)
+# GPIO.setwarnings(False)
 
 
-def read_tag():
-    reader = rfid()
-    try:
-        print("place tag")
-        id, text = reader.read()
-        return id
-    finally:
-        GPIO.cleanup()
+# def read_tag():
+#     reader = rfid()
+#     try:
+#         print("place tag")
+#         id, text = reader.read()
+#         return id
+#     finally:
+#         GPIO.cleanup()
 
 def get_patient_id(card_id):
     DATA = {"card": card_id}
@@ -45,17 +45,19 @@ def add_visit_pharm(pharmacie, patient):
 def send_request():
     patient_id = -999999
     while True:
-        with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
-            inp = json.load(inp_f)['INP']
-            role = json.load(inp_f)['role']
+        # with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
+        with open("./inp.json", "r") as inp_f:
+            response = json.load(inp_f)
+            inp = response['INP']
+            role = response['role']
         inp_f.close()
-        patient_id = read_tag()
+        patient_id = 1072111989263
         if(patient_id != -999999):
             patient_id = get_patient_id(patient_id)
             if role == 'pharmacie':
-                add_visit_pharm(inp, role)
+                add_visit_pharm(inp, patient_id)
             elif role == 'doctor':
-                add_visit_med(inp, role)
+                add_visit_med(inp, patient_id)
             sleep(2)
 
 

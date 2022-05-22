@@ -1,1 +1,4 @@
-{"INP": 123456, "doctor": true}
+{
+    "INP": 123456789,
+    "role": "pharmacie"
+}
