@@ -31,11 +31,11 @@
                                 {% csrf_token %}
 
                                 <div class="row">
-                                    <input type="text" placeholder="Enter CIN" id="cin" value="" name="cin">
+                                    <input required type="text" placeholder="Enter CIN" id="cin" value="" name="cin">
                                 </div>
 
                                 <div class="row">
-                                    <input type="password" placeholder="Enter Password" id="password" value="" name="password">
+                                    <input required type="password" placeholder="Enter Password" id="password" value="" name="password">
                                 </div>
                                 <button id="login-btn" type="submit">
                                     <h2>Log In</h2>
