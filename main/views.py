@@ -7,6 +7,9 @@ import json
 
 # Create your views here
 
+def index(request):
+    return render(request, 'index.html')
+
 def login(request):
     cin = request.POST['cin']
     password = request.POST['password']
@@ -16,7 +19,6 @@ def login(request):
             json.dump(response_data, inp_file)
         inp_file.close
     return HttpResponse(json.dumps(response_data), content_type="application/json")
-    return HttpResponse(status_code)
 
 def get_inp(cin, password):
 
