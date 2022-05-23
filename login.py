@@ -67,11 +67,17 @@ def send_request():
                     inp = response['INP']
                     role = response['role']
                 inp_f.close()
-                patient_id = get_patient_id(patient_id)
-                if role == 'pharmacie':
-                    add_visit_pharm(inp, patient_id)
-                elif role == 'doctor':
-                    add_visit_med(inp, patient_id)
+                try:
+                    patient_id = get_patient_id(patient_id)
+                    user_found = True
+                except:
+                    user_found = False
+    
+                if user_found:
+                    if role == 'pharmacie':
+                        add_visit_pharm(inp, patient_id)
+                    elif role == 'doctor':
+                        add_visit_med(inp, patient_id)
                 sleep(2)
 
 
