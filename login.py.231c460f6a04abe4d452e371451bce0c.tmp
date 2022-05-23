@@ -50,7 +50,15 @@ def add_visit_pharm(pharmacie, patient):
 
 
 def send_request():
-    
+    connected = False
+    while not connected:
+        try:
+            ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+            connected = True
+        except:
+            connected = False
+
+    if connected:
         while True:
             patient_id = ser.readline().decode().strip('\n').strip('\r')
             if patient_id:
