@@ -72,6 +72,7 @@ def send_request():
                     user_found = True
                 except:
                     user_found = False
+                    print("user not found")
     
                 if user_found:
                     if role == 'pharmacie':
