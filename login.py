@@ -1,5 +1,7 @@
 import json
+from sqlite3 import connect
 import requests
+import serial
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522 as rfid
 from time import sleep 
@@ -43,21 +45,29 @@ def add_visit_pharm(pharmacie, patient):
 
 
 def send_request():
-    patient_id = -999999
-    while True:
-        with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
-            response = json.load(inp_f)
-            inp = response['INP']
-            role = response['role']
-        inp_f.close()
-        patient_id = read_tag()
-        if(patient_id != -999999):
-            patient_id = get_patient_id(patient_id)
-            if role == 'pharmacie':
-                add_visit_pharm(inp, patient_id)
-            elif role == 'doctor':
-                add_visit_med(inp, patient_id)
-            sleep(2)
+    connected = False
+    while not connected:
+        try:
+            ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+            connected = True
+        except:
+            connected = False
+
+    if connected:
+        while True:
+            patient_id = ser.readline().decode().strip('\n')
+            if patient_id:
+                with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
+                    response = json.load(inp_f)
+                    inp = response['INP']
+                    role = response['role']
+                inp_f.close()
+                patient_id = get_patient_id(patient_id)
+                if role == 'pharmacie':
+                    add_visit_pharm(inp, patient_id)
+                elif role == 'doctor':
+                    add_visit_med(inp, patient_id)
+                sleep(2)
 
 
 if __name__ == '__main__':
