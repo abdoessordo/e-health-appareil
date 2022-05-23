@@ -60,7 +60,7 @@ def send_request():
 
     if connected:
         while True:
-            patient_id = ser.readline().decode().strip('\n')
+            patient_id = ser.readline().decode().strip('\n').strip('\r')
             if patient_id:
                 with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
                     response = json.load(inp_f)
