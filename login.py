@@ -20,6 +20,7 @@ def read_tag():
 
 def get_patient_id(card_id):
     DATA = {"card": card_id}
+    print(f"DATA_CARD = {DATA}")
     r = requests.post("http://3.18.29.109/card/", DATA)
     print(r.status_code)
     if r.status_code == 200 and r.status_code != {'error': 'Not found'}:
@@ -30,6 +31,8 @@ def add_visit_med(medcin, patient):
     DATA = {"patient": patient,
             "medcin": medcin
             }
+    print(f"DATA_med = {DATA}")
+
     r = requests.post("http://3.18.29.109/doctor/create_visite", DATA)
 
     print(r.status_code)
@@ -39,6 +42,8 @@ def add_visit_pharm(pharmacie, patient):
     DATA = {"patient": patient,
             "pharma": pharmacie
             }
+    print(f"DATA_pharm = {DATA}")
+    
     r = requests.get("http://3.18.29.109/pharmacie/create_visite", DATA)
 
     print(r.status_code)
