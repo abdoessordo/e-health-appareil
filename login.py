@@ -4,7 +4,7 @@ import requests
 import serial
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522 as rfid
-from time import sleep 
+from time import sleep
 
 GPIO.setwarnings(False)
 
@@ -17,6 +17,7 @@ def read_tag():
         return id
     finally:
         GPIO.cleanup()
+
 
 def get_patient_id(card_id):
     DATA = {"card": card_id}
@@ -43,14 +44,22 @@ def add_visit_pharm(pharmacie, patient):
             "pharma": pharmacie
             }
     print(f"DATA_pharm = {DATA}")
-    
+
     r = requests.get("http://3.18.29.109/pharmacie/create_visite", DATA)
 
     print(r.status_code)
 
 
 def send_request():
-    
+    connected = False
+    while not connected:
+        try:
+            ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+            connected = True
+        except:
+            connected = False
+
+    if connected:
         while True:
             patient_id = ser.readline().decode().strip('\n').strip('\r')
             if patient_id:
@@ -65,7 +74,7 @@ def send_request():
                 except:
                     user_found = False
                     print("user not found")
-    
+
                 if user_found:
                     if role == 'pharmacie':
                         add_visit_pharm(inp, patient_id)
