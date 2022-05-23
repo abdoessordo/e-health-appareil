@@ -50,16 +50,17 @@ def add_visit_pharm(pharmacie, patient):
 
 
 def send_request():
-    connected = False
-    while not connected:
-        try:
-            ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-            connected = True
-        except:
-            connected = False
+    
+    while True:
+        connected = False
+        while not connected:
+            try:
+                ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+                connected = True
+            except:
+                connected = False
 
-    if connected:
-        while True:
+        if connected:
             patient_id = ser.readline().decode().strip('\n').strip('\r')
             if patient_id:
                 with open("/home/pi/Desktop/e-health-appareil/inp.json", "r") as inp_f:
@@ -80,7 +81,7 @@ def send_request():
                     elif role == 'doctor':
                         add_visit_med(inp, patient_id)
                 sleep(2)
-
+        ser.close()
 
 if __name__ == '__main__':
     send_request()
